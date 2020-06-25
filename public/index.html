@@ -16,6 +16,8 @@
   <button id="start_video_button" onclick="startVideo();">Start Video</button>
   <button id="stop_video_button" onclick="stopVideo();">Stop Video</button>
   &nbsp;
+  <input id="input-area"></input>
+  <button onClick="sendData()" >sendMessage</button>
   <button id="connect_button"  onclick="connect();">Connect</button>
   <button id="disconnect_button"  onclick="dissconnect();">Disconnect</button> 
   <input type="checkbox" id="plan_b_check" >planB</input> 
@@ -166,6 +168,17 @@
     console.log('sending SDP:', jsonSDP);
 
     sendJson(jsonSDP);
+  }
+
+  function sendData() {
+    const input = document.getElementById('input-area')
+    console.log('sendData')
+    console.log(input.value)
+    const send = {
+      type: 'yamada',
+      content: input.value,
+    }
+    sendJson(send);
   }
 
   function sendJson(json) {
